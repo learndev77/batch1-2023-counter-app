@@ -1,110 +1,184 @@
 import React, { Component, Fragment } from "react";
 
-export default class Counter extends Component {
-  state = {
-    counter: 5,
-    name: "My Name",
-    image: "https://picsum.photos/200",
-    tags: ["tag1", "tag2", "tag3"],
-  };
+// export default class Counter extends Component {
+//   state = {
+//     // counter: 5,
+//     name: "My Name",
+//     image: "https://picsum.photos/200",
+//     tags: ["tag1", "tag2", "tag3"],
+//   };
 
-  //   constructor() {
-  //     super();
-  //     // this.handleIncrement = this.handleIncrement.bind(this);
-  //   }
+//   constructor() {
+//     super();
+//     // console.log(this);
+//     // this.handleIncrement = this.handleIncrement.bind(this);
+//   }
 
-  styles = {
-    fontSize: 20,
-  };
+//   //   componentDidMount() {
+//   //     console.log("mount");
+//   //   }
 
-  getName = () => {
-    return "Roger";
-  };
+//   componentWillUnmount() {
+//     console.log("will unmount");
+//   }
 
-  getClassName() {
-    // return this.state.counter > 0
-    //   ? "badge bg-primary"
-    //   : "badge bg-warning text-dark";
-    if (this.state.counter > 0) {
-      return "badge bg-primary";
-    }
-    return "badge bg-warning text-dark";
-  }
+//   styles = {
+//     fontSize: 20,
+//   };
 
-  formatText() {
-    if (this.state.counter > 0) {
-      return this.state.counter;
-    }
-    return "Zero";
-  }
+//   getName = () => {
+//     return "Roger";
+//   };
 
-  renderTags = () => {
-    // return <h1>Render Tags</h1>
-    // if(this.state.tags.length === 0) {
-    //     return null
-    // }
-    // return (
-    //     <ul>
-    //         {this.state.tags.map((tag) => (
-    //             <li key={tag}>{tag}</li>
-    //         ))}
-    //     </ul>
-    // )
-    // return this.state.tags.length > 0 ? (
-    //     <ul>
-    //         {this.state.tags.map((tag) => (
-    //             <li key={tag}>{tag}</li>
-    //         ))}
-    //     </ul>
-    // ) : (
-    //     <h1>There are no tags!</h1>
-    // )
-  };
+//   getClassName() {
+//     // return this.state.counter > 0
+//     //   ? "badge bg-primary"
+//     //   : "badge bg-warning text-dark";
+//     if (counter.value > 0) {
+//       return "badge bg-primary";
+//     }
+//     return "badge bg-warning text-dark";
+//   }
 
-  handleIncrement = () => {
-    // console.log("inside handleIncrement");
-    // this.state.counter++;
+//   formatText() {
+//     if (counter.value > 0) {
+//       return counter.value;
+//     }
+//     return "Zero";
+//   }
 
-    this.setState({ counter: this.state.counter + 1 });
-  };
-  handleDecrement = () => {
-    // console.log("inside handleIncrement");
-    // this.state.counter++;
+//   renderTags = () => {
+//     // return <h1>Render Tags</h1>
+//     // if(this.state.tags.length === 0) {
+//     //     return null
+//     // }
+//     // return (
+//     //     <ul>
+//     //         {this.state.tags.map((tag) => (
+//     //             <li key={tag}>{tag}</li>
+//     //         ))}
+//     //     </ul>
+//     // )
+//     // return this.state.tags.length > 0 ? (
+//     //     <ul>
+//     //         {this.state.tags.map((tag) => (
+//     //             <li key={tag}>{tag}</li>
+//     //         ))}
+//     //     </ul>
+//     // ) : (
+//     //     <h1>There are no tags!</h1>
+//     // )
+//   };
 
-    if (this.state.counter > 0) {
-      this.setState({ counter: this.state.counter - 1 });
-    }
-  };
+//   render() {
+//     return (
+//       <div>
+//         {/* {children} */}
+//         {/* <div 
+//                 style={this.styles}
+//             >{this.state.name}</div> */}
+//         {/* <img src={this.state.image} alt="">
+//             </img>
+//             <div>{this.getName()}</div>
+//             <div>{this.renderTags()}</div> */}
 
-  render() {
-    return (
-      <div>
-        {/* <div 
-                style={this.styles}
-            >{this.state.name}</div> */}
-        {/* <img src={this.state.image} alt="">
-            </img>
-            <div>{this.getName()}</div>
-            <div>{this.renderTags()}</div> */}
+//         <button
+//           disabled={counter.value === 0}
+//           onClick={() => onDecrement(counter.id)}
+//         >
+//           -
+//         </button>
+//         <span
+//           style={this.styles}
+//           //   className={`badge ${
+//           //     this.state.counter > 0 ? "bg-primary" : "bg-warning text-dark"
+//           //   }`}
+//           className={this.getClassName()}
+//         >
+//           {this.formatText()}
+//         </span>
 
-        <button
-          disabled={this.state.counter === 0}
-          onClick={this.handleDecrement}
-        >
-          -
-        </button>
-        <span
-          style={this.styles}
-          //   className={`badge ${
-          //     this.state.counter > 0 ? "bg-primary" : "bg-warning text-dark"
-          //   }`}
-          className={this.getClassName()}
-        >
-          {this.formatText()}
-        </span>
+//         <button onClick={() => onIncrement(counter.id)}>
+//           +
+//         </button>
 
-        <button onClick={this.handleIncrement}>+</button>
-      </div>
-    );
-  }
-}
+//         <button
+//           onClick={() => onDelete(counter.id)}
+//           className="btn btn-danger ms-1"
+//         >
+//           Delete
+//         </button>
+//       </div>
+//     );
+//   }
+// }
+
+const Counter = ({counter, onIncrement, onDecrement, onDelete}) => {
+
+    // const getStyles = () =>  {
+    //         fontSize: 20,
+    //       };
+        
+          const getName = () => {
+            return "Roger";
+          };
+        
+          const getClassName = () =>  {
+            // return this.state.counter > 0
+            //   ? "badge bg-primary"
+            //   : "badge bg-warning text-dark";
+            if (counter.value > 0) {
+              return "badge bg-primary";
+            }
+            return "badge bg-warning text-dark";
+          }
+        
+          const formatText = () => {
+            if (counter.value > 0) {
+              return counter.value;
+            }
+            return "Zero";
+          }
+
+            return (
+              <div>
+                {/* {children} */}
+                {/* <div 
+                        style={this.styles}
+                    >{this.state.name}</div> */}
+                {/* <img src={this.state.image} alt="">
+                    </img>
+                    <div>{this.getName()}</div>
+                    <div>{this.renderTags()}</div> */}
+        
+                <button
+                  disabled={counter.value === 0}
+                  onClick={() => onDecrement(counter.id)}
+                >
+                  -
+                </button>
+                <span
+                //   style={styles}
+                  //   className={`badge ${
+                  //     this.state.counter > 0 ? "bg-primary" : "bg-warning text-dark"
+                  //   }`}
+                  className={getClassName()}
+                >
+                  {formatText()}
+                </span>
+        
+                <button onClick={() => onIncrement(counter.id)}>
+                  +
+                </button>
+        
+                <button
+                  onClick={() => onDelete(counter.id)}
+                  className="btn btn-danger ms-1"
+                >
+                  Delete
+                </button>
+              </div>
+            );
+};
+
+export default Counter
